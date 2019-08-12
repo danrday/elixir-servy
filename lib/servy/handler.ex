@@ -1,4 +1,8 @@
 defmodule Servy.Handler do
+
+  @moduledoc "Handles HTTP requests."
+
+  @doc "Transforms the request into a response."
   def handle(request) do
     request
     |> parse
@@ -10,6 +14,7 @@ defmodule Servy.Handler do
     |> format_response
   end
 
+  @doc "Logs 404 requests."
   def track(%{status: 404, path: path} = conv) do
     IO.puts "Warning: #{path} is on the loose!"
     conv
